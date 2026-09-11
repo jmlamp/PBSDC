@@ -47,7 +47,7 @@ The software is free for academic teaching and research purposes but I ask you t
 To use the code:
 1. In the tpbsdc.f95 file, modify the parameters in lines 253–282. The most important parameters are solver_ind (1 = the new PBSDC method, 2 = the DBDC method, 3 = the PBDC method) and optimality_condition (1 = the PBSDC-crit variant, 2 = the PBSDC-stat variant). In addition, for example name of the starting point file and the output file can be specified later in tpbsdc.f95.
 2. In functions.f95 file, define the DC functions in f1 and f2, and their subgradients in sugradient_f1 and subgradient_f2.
-3. In command prompt, run Makefile by typing "make". Note, Fortran files need to be together with Makefile in the same folder. In addition, you need to install gfortran and other needed tools to run Makefile.
+3. In command prompt, run Makefile. Note, Fortran files need to be together with Makefile in the same folder. In addition, you need to install gfortran and other needed tools to run Makefile.
 4. Finally, just type "tpbsdc.exe" in the command prompt.
 
 The algorithm outputs a TXT file containing, for example, number of blocks, size of block, problem dimension, number of function evaluations, number of subgradient evaluations for the first and second DC components, CPU time, and function value.

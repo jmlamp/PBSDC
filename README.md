@@ -15,7 +15,7 @@ The software is free for academic teaching and research purposes but I ask you t
          
    tpbsdc.f95         - Main program for PBSDC 
 
-   pbsdc.f95 	        - PBSDC method.
+   pbsdc.f95 	      - PBSDC method
    
    constants.f95      - Double precision (also some parameters) 
    
@@ -23,25 +23,25 @@ The software is free for academic teaching and research purposes but I ask you t
    
    bundle2.f95        - Bundle of DC component f_2                                    
         
-   functions.f95      - User-specified DC components f_1 and f_2 together with subgradients of DC components. Contains also user-specified initial values for parameters        
+   functions.f95      - User-specified DC components f_1 and f_2 together with subgradients of DC components. Contains also user-specified initial values for parameters.       
    
-   fun.f95 	          - Defines objective funtion and gradient of the norm minimization problem.
+   fun.f95 	          - Defines objective funtion and gradient of the norm minimization problem
 
-   norm_min.f95 	    - Solver for the norm minimization problem.
+   norm_min.f95 	  - Solver for the norm minimization problem
    
-   pbdc.f95 	        - PBDC method by K. Joki.
+   pbdc.f95 	      - PBDC method by K. Joki
 
-   dbdc.f95 	        - DBDC method by K. Joki.
+   dbdc.f95 	      - DBDC method by K. Joki
 	
-   plqdf1.f 	        - Quadratic solver by L. Luksan.
+   plqdf1.f 	      - Quadratic solver by L. Luksan
   
-   pvmm.f             - Variable metric method by L. Luksan.
+   pvmm.f             - Variable metric method by L. Luksan
    
-   mqsubs.f 	        - Basic modules for PVMM by L. Luksan.
+   mqsubs.f 	      - Basic modules for PVMM by L. Luksan
    
-   pqsubs.f 	        - Matrix modules for PVMM by L. Luksan.
+   pqsubs.f 	      - Matrix modules for PVMM by L. Luksan
 	
-   Makefile 	        - Makefile.
+   Makefile 	      - Makefile
 
 ## Program usage: 
 To use the code:
@@ -49,6 +49,7 @@ To use the code:
 2. In functions.f95 file, define the DC functions in f1 and f2, and their subgradients in sugradient_f1 and subgradient_f2.
 3. Run Makefile by typing "make".
 4. Finally, just type "tpbsdc.exe".
+
 The algorithm outputs a TXT file containing, for example, number of blocks, size of block, problem dimension, number of function evaluations, number of subgradient evaluations for the first and second DC components, CPU time, and function value.
    
 ## References:                                                                                         

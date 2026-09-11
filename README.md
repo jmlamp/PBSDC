@@ -7,9 +7,9 @@ During each round of 'main iteration' it is possible to utilize OpenMP to calcul
 
 The software utilizes code PVMM by Prof. Ladislav Luksan that is licensed by the GNU Lesser General Public License (LGPL). In addition, code PLQDF1 by Prof. Ladislav Luksan is used to solve quadratic direction finding problem.
 
-The software also includes PBDC [2] and DBDC [3] methods by Kaisa Joki and both methods can be used in their original form in the code. Both methods are licensed by the MIT License.
+The software also includes PBDC [2] and DBDC [3] methods by Docent Kaisa Joki and both methods can be used in their original form in the code. Both methods are licensed by the MIT License.
 
-The software is free for academic teaching and research purposes but I ask you to refer the reference given below if you use it. To use the software modify tpbsdc.f95 and functions.f95 as needed. If you have any questions conserning the software, please contact directly the author Jenni Lampainen (email: jmlamp@utu.fi).
+The software is free for academic teaching and research purposes but I ask you to refer the references given below if you use it. To use the software modify tpbsdc.f95 and functions.f95 as needed. If you have any questions conserning the software, please contact directly the author Jenni Lampainen (email: jmlamp@utu.fi).
 
 ## Code include:                                                                     
          
@@ -47,8 +47,8 @@ The software is free for academic teaching and research purposes but I ask you t
 To use the code:
 1. In the tpbsdc.f95 file, modify the parameters in lines 253–282. The most important parameters are solver_ind (1 = the new PBSDC method, 2 = the DBDC method, 3 = the PBDC method) and optimality_condition (1 = the PBSDC-crit variant, 2 = the PBSDC-stat variant). In addition, for example name of the starting point file and the output file can be specified later in tpbsdc.f95.
 2. In functions.f95 file, define the DC functions in f1 and f2, and their subgradients in sugradient_f1 and subgradient_f2.
-3. Run Makefile by typing "make".
-4. Finally, just type "tpbsdc.exe".
+3. In command prompt, run Makefile by typing "make". Note, Fortran files need to be together with Makefile in the same folder. In addition, you need to install gfortran and other needed tools to run Makefile.
+4. Finally, just type "tpbsdc.exe" in the command prompt.
 
 The algorithm outputs a TXT file containing, for example, number of blocks, size of block, problem dimension, number of function evaluations, number of subgradient evaluations for the first and second DC components, CPU time, and function value.
    

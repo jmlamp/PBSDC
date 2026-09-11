@@ -10,7 +10,7 @@
         !| |                                                                                  | |
         !| |                 INFORMATION SUPPLIED BY THE USER:                                | | 
         !| |                                                                                  | |
-        !| |    * PROBLEM specification GIVEN by user in tdbdc.f95:                           | |
+        !| |    * PROBLEM specification GIVEN by user in tpbsdc.f95:                          | |
         !| |                                                                                  | |       
         !| |        - The DC component f1:                    'problem1'                      | |
         !| |        - The DC component f2:                    'problem2'                      | |
@@ -55,19 +55,53 @@
         !| .**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**. |
         !*..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..*
 
+        !*..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..*|
+        !| .**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**.. |
+        !| |                                                                                           | |
+        !| |                                                                                           | |
+        !| |                              SUBROUTINES AND FUNCTIONS:                                   | |       
+        !| |                                                                                           | |       
+        !| |    * Problem data allocation and deallocation:                                            | |
+		!| |       - allocate_prob_data(nblock, sizeblock)                                             | |       
+        !| |       - deallocate_prob_data()                                                            | |             
+        !| |                                                                                           | |   
+        !| |    * Calculates the sum used in f_1 and f_2 for parameter t_j:                            | |
+        !| |       - summa(y, j, user_n)                                                               | |   
+        !| |                                                                                           | |   
+        !| |    * Computation of the value of the DC functions f_1 and f_2:                            | |
+        !| |        - f1(y, problem1, user_n)   the value of DC component f_1 at a point y             | |
+        !| |        - f2(y, problem2, user_n)   the value of DC component f_2 at a point y             | |	
+        !| |                                                                                           | |		
+        !| |    * Computation of the value of the block-separable DC functions f_1 and f_2:            | |
+        !| |        - f1_block(y, problem1, user_n_block)   the value of DC component f_1 at a point y | |
+        !| |        - f2_block(y, problem2, user_n_block)   the value of DC component f_2 at a point y | |                         
+        !| |                                                                                           | |  
+		!| |    * Computation of the subgradient of the DC components f_1 and f_2:                     | |
+        !| |        - subgradient_f1(y, problem1, user_n)  the subgradient of f_1 at y                 | |
+        !| |        - subgradient_f2(y, problem2, user_n)  the subgradient of f_2 at y                 | |
+        !| |                                                                                           | |		
+        !| |    * Computation of the subgradient of the block-separable DC components f_1 and f_2:     | |
+        !| |        - subgradient_f1_block(y, problem1, user_n_block)  the subgradient of f_1 at y     | |
+        !| |        - subgradient_f2_block(y, problem2, user_n_block)  the subgradient of f_2 at y     | |       
+        !| |                                                                                           | |
+        !| |                                                                                           | |
+        !| .**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**.. |
+        !*..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..*|
 
-        !*..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..*
-        !| .**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**. |
-        !| |                                                                                          | |
-        !| |                                                                                          | |
-        !| |                                 SUBROUTINES:                                             | |
-        !| |                                                                                          | |
-        !| |    Problem data allocation:               allocate_prob_data(nblock, sizeblock)          | |
-        !| |                                                                                          | |
-        !| |                                                                                          | |
-        !| .**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**. |
-        !*..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..*
-        
+		!*..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..*
+        !| .**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**. |
+        !| |                                                                              | |
+        !| |     To EXECUTE the bundle algorithm PBSDC the USER needs to DETERMINE:       | | 
+        !| |                                                                              | |       
+        !| |        f1(y, problem1, user_n)     - value of DC component f_1 at a point y  | |
+        !| |        f2(y, problem2, user_n)     - value of DC component f_2 at a point y  | |
+        !| |                                                                              | |
+        !| |        subgradient_f1(y, problem1, user_n)   - subgradient of f_1 at y       | |
+        !| |        subgradient_f2(y, problem2, user_n)   - subgradient of f_2 at y       | |
+        !| |                                                                              | |
+        !| |                                                                              | |       
+        !| .**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**. |
+        !*..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..*
 
         !*..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..*
         !| .**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**. |
@@ -255,42 +289,6 @@
         
         !________________________________________________________________________________
         !>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<
-
-        
-        !*..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..*
-        !| .**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**. |
-        !| |                                                                              | |
-        !| |     To EXECUTE the bundle algorithm PBSDC the USER needs to DETERMINE:       | | 
-        !| |                                                                              | |       
-        !| |        f1(y, problem1, user_n)     - value of DC component f_1 at a point y  | |
-        !| |        f2(y, problem2, user_n)     - value of DC component f_2 at a point y  | |
-        !| |                                                                              | |
-        !| |        subgradient_f1(y, problem1, user_n)   - subgradient of f_1 at y       | |
-        !| |        subgradient_f2(y, problem2, user_n)   - subgradient of f_2 at y       | |
-        !| |                                                                              | |
-        !| |                                                                              | |       
-        !| .**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**. |
-        !*..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..*
-        
-        !*..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..*|
-        !| .**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**.. |
-        !| |                                                                                           | |
-        !| |                                                                                           | |
-        !| |                                OTHER SUBROUTINES:                                         | |       
-        !| |                                                                                           | |       
-        !| |    * Computation of the value of the block-separable DC functions f_1 and f_2:            | |
-        !| |        - f1_block(y, problem1, user_n_block)   the value of DC component f_1 at a point y | |
-        !| |        - f2_block(y, problem2, user_n_block)   the value of DC component f_2 at a point y | |           
-        !| |                                                                                           | |               
-        !| |                                                                                           | |               
-        !| |    * Computation of the subgradient of the block-separable DC components f_1 and f_2:     | |
-        !| |        - subgradient_f1_block(y, problem1, user_n_block)  the subgradient of f_1 at y     | |
-        !| |        - subgradient_f2_block(y, problem2, user_n_block)  the subgradient of f_2 at y     | |       
-        !| |                                                                                           | |
-        !| |                                                                                           | |
-        !| |                                                                                           | |
-        !| .**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**.. |
-        !*..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..**..*|
         
         CONTAINS
 

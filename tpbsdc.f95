@@ -71,7 +71,7 @@
         !|                                                                                      |
         !|                                                                                      |
         !|                                                                                      |
-        !|   To USE the software MODIFY tdbdc.f95 and functions.f95 as needed                   |
+        !|   To USE the software MODIFY tpbsdc.f95 and functions.f95 as needed                  |
         !|                                                                                      |
         !|                                                                                      |
         !|   Reference to PBSDC:                                                                |

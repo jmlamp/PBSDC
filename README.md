@@ -54,10 +54,13 @@ The algorithm outputs a TXT file containing, for example, number of blocks, size
    
 ## References:                                                                                         
 Reference to PBSDC:
+
 [1] J. Lampainen, K. Joki, A. M. Bagirov, S. Taheri and M. M. Mäkelä: "Proximal bundle method for block-separable nonsmooth DC optimization". Under review, (2026).
 
 Reference to PBDC:
+
 [2] Kaisa Joki, Adil M. Bagirov, Napsu Karmitsa and Marko M. Mäkelä: "A proximal bundle method for nonsmooth DC optimization utilizing nonconvex cutting planes". J. Glob. Optim. 68(3), 501-535, (2017).
 
 Reference to DBDC:
+
 [3] Kaisa Joki, Adil M. Bagirov, Napsu Karmitsa, Marko M. Mäkelä and Sona Taheri: "Double bundle method for finding Clarke stationary points in nonsmooth DC programming". SIAM J. Optim. 28(2), 1892-1919, (2018).
